@@ -2,6 +2,7 @@ package com.guokm.tibetanroot.fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,7 @@ import com.guokm.tibetanroot.R;
  * Created by Administrator on 2017/5/18.
  */
 
-public class PublishFragment extends Fragment {
+public class PublishFragment extends BaseFragment {
     public static PublishFragment newInstance(String param1) {
         PublishFragment fragment = new PublishFragment();
         Bundle args = new Bundle();
@@ -42,4 +43,13 @@ public class PublishFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        initView();
+    }
+
+    private void initView() {
+
+    }
 }

@@ -7,6 +7,9 @@ import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
@@ -23,18 +26,19 @@ public class MainActivity extends BaseActivity {
     private SubjectFragment mSubjectFragment;
     private MineFragment mMineFragment;
     private PublishFragment mPublishFragment;
+    private Button search_button;
+    private Button back_button;
+    private TextView title_text;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /**
-         * 背景图和通知栏融合
-         */
-        if (Build.VERSION.SDK_INT >= 21) {
-            View decorView = getWindow().getDecorView();
-            decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
-            getWindow().setStatusBarColor(Color.TRANSPARENT);
-        }
         setContentView(R.layout.activity_main);
+        RelativeLayout titleLayout= (RelativeLayout) this.findViewById(R.id.title);
+        back_button = (Button) titleLayout.findViewById(R.id.back_button);
+        search_button = (Button) titleLayout.findViewById(R.id.search_button);
+        title_text = (TextView) titleLayout.findViewById(R.id.title_text);
+
         setDefaultFragment();
         bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
 
@@ -57,18 +61,21 @@ public class MainActivity extends BaseActivity {
                         if (mSubjectFragment == null) {
                             mSubjectFragment = SubjectFragment.newInstance("话题");//传内容给fragment
                         }
+                        title_text.setText("藏根");
                         transaction.replace(R.id.tb, mSubjectFragment);
                         break;
                     case 2:
                         if (mMineFragment == null) {
                             mMineFragment = MineFragment.newInstance("我");
                         }
+                        title_text.setText("藏根");
                         transaction.replace(R.id.tb, mMineFragment);
                         break;
                     case 1:
                         if (mPublishFragment == null) {
                             mPublishFragment = PublishFragment.newInstance("发表");
                         }
+                        title_text.setText("发表话题规则");
                         transaction.replace(R.id.tb, mPublishFragment);
                         break;
                     default:

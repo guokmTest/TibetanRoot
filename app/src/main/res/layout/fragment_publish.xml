@@ -4,13 +4,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical"
+    android:padding="10dp"
     tools:context="com.guokm.tibetanroot.activity.MainActivity">
 
     <TextView
-        android:layout_gravity="center"
         android:id="@+id/tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-         />
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+    <TextView
+        android:textColor="@color/colorPrimary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/permitted_sub"
+        android:textSize="20dip" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/permitted_sub_info"
+        android:textSize="17dip" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/unpermitted_sub"
+        android:textColor="@color/colorAccent"
+        android:textSize="20dip" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/unpermitted_sub_info"
+        android:textSize="17dip" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/shape_okbtn"
+        android:text="朕知道了"
+android:textColor="#fff"
+        />
 
 </LinearLayout>

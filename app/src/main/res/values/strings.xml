@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">tibetanRoot</string>
+    <string name="permitted_sub">可以发表什么话题？</string>
+    <string name="permitted_sub_info">根雕木雕、奇石字画、文玩收藏等相关的交流互动、学习分享等话题</string>
+    <string name="unpermitted_sub">不可以发表什么话题？</string>
+    <string name="unpermitted_sub_info">广告、反动、不健康的话题禁止发表;\n多次发布违禁内容，将被终生禁言。</string>
 </resources>

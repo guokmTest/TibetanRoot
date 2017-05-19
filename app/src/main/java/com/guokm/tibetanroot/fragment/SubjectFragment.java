@@ -13,7 +13,7 @@ import com.guokm.tibetanroot.R;
  * Created by Administrator on 2017/5/18.
  */
 
-public class SubjectFragment extends Fragment {
+public class SubjectFragment extends BaseFragment {
     public static SubjectFragment newInstance(String param1) {
         SubjectFragment fragment = new SubjectFragment();
         Bundle args = new Bundle();
