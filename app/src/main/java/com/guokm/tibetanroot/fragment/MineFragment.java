@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.guokm.tibetanroot.R;
+import com.guokm.tibetanroot.activity.MessageActivity;
 import com.guokm.tibetanroot.activity.PersonInfoActivity;
 import com.jauker.widget.BadgeView;
 
@@ -96,7 +97,8 @@ public class MineFragment extends BaseFragment {
                 startActivity(i);
                 break;
             case R.id.message_tv:
-                //
+                Intent iMessage=new Intent(getActivity(), MessageActivity.class);
+                startActivity(iMessage);
                 break;
             case R.id.subject_tv:
                 //

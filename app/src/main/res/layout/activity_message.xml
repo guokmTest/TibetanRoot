@@ -11,48 +11,35 @@
     tools:context="com.guokm.tibetanroot.activity.PersonInfoActivity">
 
 
-    <include layout="@layout/title"
-
-        />
+    <include layout="@layout/title" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorBackground"
         android:orientation="vertical">
-
-        <RelativeLayout
-            android:id="@+id/logo_layout"
+        <com.chanven.lib.cptr.PtrClassicFrameLayout
+            android:id="@+id/message_list_view_frame"
+            xmlns:cube_ptr="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@color/colorWrite"
-            android:padding="20dp">
+            android:layout_height="match_parent"
+            android:background="#f0f0f0"
+            cube_ptr:ptr_resistance="1.7"
+            cube_ptr:ptr_ratio_of_header_height_to_refresh="1.2"
+            cube_ptr:ptr_duration_to_close="200"
+            cube_ptr:ptr_duration_to_close_header="1000"
+            cube_ptr:ptr_keep_header_when_refresh="true"
+            cube_ptr:ptr_pull_to_fresh="false">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:text="头像"
-                android:textSize="20sp" />
-
-            <ImageView
-                android:id="@+id/logo"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_alignParentRight="true"
-                android:src="@drawable/logoyzj" />
-
-        </RelativeLayout>
-
-        <View
+        <ListView
+            android:id="@+id/message_lv"
             android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:layout_marginEnd="20dp"
-            android:layout_marginStart="20dp"
-            android:background="@android:color/darker_gray" />
+            android:layout_height="match_parent"
+            android:divider="@null"
+            />
+        </com.chanven.lib.cptr.PtrClassicFrameLayout>
 
-        <RelativeLayout
+        <!--<RelativeLayout
             android:id="@+id/nickname_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -60,20 +47,28 @@
             android:padding="20dp">
 
             <TextView
+                android:id="@+id/title_message_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="昵称"
+                android:text="这是标题"
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/nickname"
+                android:id="@+id/time_message_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:textSize="18sp" />
+                android:text="01/01/2017"
+                android:textSize="17sp" />
 
-        </RelativeLayout>
+        </RelativeLayout>-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:background="@android:color/darker_gray" />
     </LinearLayout>
 </LinearLayout>
