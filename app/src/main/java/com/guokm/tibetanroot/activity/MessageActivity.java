@@ -142,7 +142,12 @@ public class MessageActivity extends BaseActivity {
     @OnItemClick(R.id.message_lv)
     void OnItemClick(AdapterView<?> adapterView, View view, int position, long l){
         //listview item的点击事件
-        Toast.makeText(MessageActivity.this,itemList.get(position).toString(),Toast.LENGTH_SHORT).show();
+        Intent intent=new Intent(MessageActivity.this,MessageDetailActivity.class);
+        Bundle bundle=new Bundle();
+        bundle.putString("title",itemList.get(position).getTitle());
+        intent.putExtras(bundle);
+        startActivity(intent);
+//        Toast.makeText(MessageActivity.this,itemList.get(position).toString(),Toast.LENGTH_SHORT).show();
 
 
     }

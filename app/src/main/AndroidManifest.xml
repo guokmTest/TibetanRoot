@@ -19,6 +19,7 @@
         <activity android:name=".activity.PersonInfoActivity" />
         <activity android:name=".activity.ModifyNickActivity" />
         <activity android:name=".activity.MessageActivity" />
+        <activity android:name=".activity.MessageDetailActivity" />
     </application>
 
 </manifest>
