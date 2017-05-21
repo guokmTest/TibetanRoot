@@ -33,5 +33,11 @@
                 android:textSize="17sp" />
 
         </RelativeLayout>
+    <View
+        android:layout_marginStart="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@android:color/darker_gray"
+        />
 
 </LinearLayout>

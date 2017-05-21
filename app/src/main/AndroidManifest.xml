@@ -20,6 +20,9 @@
         <activity android:name=".activity.ModifyNickActivity" />
         <activity android:name=".activity.MessageActivity" />
         <activity android:name=".activity.MessageDetailActivity" />
+        <activity android:name=".activity.TopicActivity"/>
+        <activity android:name=".activity.CollectionActivity"/>
+        <activity android:name=".activity.SetUpActivity"/>
     </application>
 
 </manifest>

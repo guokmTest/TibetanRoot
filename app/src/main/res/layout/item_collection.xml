@@ -21,20 +21,20 @@
         android:layout_marginLeft="20dp"
         >
         <TextView
-            android:id="@+id/title_tv"
+            android:id="@+id/name_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:text="这是一个测试文本"
+            android:text="guodada"
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/time_tv"
+            android:id="@+id/body_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:text="01/01/2017"
+            android:text="我是一只徐达灰会挥发"
             android:textSize="17sp" />
         <View
             android:layout_marginTop="5dip"

@@ -12,8 +12,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.guokm.tibetanroot.R;
+import com.guokm.tibetanroot.activity.CollectionActivity;
 import com.guokm.tibetanroot.activity.MessageActivity;
 import com.guokm.tibetanroot.activity.PersonInfoActivity;
+import com.guokm.tibetanroot.activity.SetUpActivity;
+import com.guokm.tibetanroot.activity.TopicActivity;
 import com.jauker.widget.BadgeView;
 
 /**
@@ -102,12 +105,17 @@ public class MineFragment extends BaseFragment {
                 break;
             case R.id.subject_tv:
                 //
+                Intent iTopic=new Intent(getActivity(), TopicActivity.class);
+                startActivity(iTopic);
                 break;
             case R.id.favorites_tv:
                 //
+                Intent iCollection=new Intent(getActivity(), CollectionActivity.class);
+                startActivity(iCollection);
                 break;
             case R.id.setup:
-                //
+                Intent iSetUp=new Intent(getActivity(), SetUpActivity.class);
+                startActivity(iSetUp);
                 break;
         }
     }
