@@ -23,6 +23,7 @@
         <activity android:name=".activity.TopicActivity"/>
         <activity android:name=".activity.CollectionActivity"/>
         <activity android:name=".activity.SetUpActivity"/>
+        <activity android:name=".activity.PublishActivity"/>
     </application>
 
 </manifest>
