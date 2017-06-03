@@ -7,6 +7,7 @@ import java.io.Serializable;
  */
 
 public class MessageItem implements Serializable {
+    private static final long serialVersionUID = -6510184112088510953L;
     private String title;
     private String date;
 

@@ -100,7 +100,10 @@ public class MainActivity extends BaseActivity {
     private void setDefaultFragment() {
         FragmentManager fm = getFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
-        mSubjectFragment = SubjectFragment.newInstance("话题");
+        if(mSubjectFragment==null){
+
+            mSubjectFragment = SubjectFragment.newInstance("话题");
+        }
         transaction.replace(R.id.tb, mSubjectFragment);
         transaction.commit();
     }

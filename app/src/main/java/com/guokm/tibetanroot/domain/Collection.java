@@ -7,6 +7,7 @@ import java.io.Serializable;
  */
 
 public class Collection implements Serializable {
+    private static final long serialVersionUID = 2896929222577229930L;
     private String name;
     private String body;
     private  String imgUrl;
