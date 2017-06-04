@@ -22,6 +22,7 @@ import com.guokm.tibetanroot.adapter.MessageItemAdapter;
 import com.guokm.tibetanroot.adapter.SubjectItemAdapter;
 import com.guokm.tibetanroot.domain.MessageItem;
 import com.guokm.tibetanroot.domain.Subject;
+import com.guokm.tibetanroot.util.T;
 import com.orhanobut.logger.Logger;
 
 import org.json.JSONArray;
@@ -42,15 +43,21 @@ import butterknife.Unbinder;
 public class SubjectFragment extends BaseFragment {
     @BindView(R.id.subject_lv)
     ListView subjectLv;
-    Unbinder unbinder;
+    Unbinder unbinder = null;
     @BindView(R.id.message_list_view_frame)
     PtrClassicFrameLayout messageListViewFrame;
     private List<Subject> itemList = new ArrayList<Subject>();
     //    int page=0;
     Handler handler = new Handler();
+    private static SubjectFragment fragment;
+    private View view;
+    private boolean isButterKnifeInit = false;
 
     public static SubjectFragment newInstance(String param1) {
-        SubjectFragment fragment = new SubjectFragment();
+        if (fragment == null) {
+
+            fragment = new SubjectFragment();
+        }
         Bundle args = new Bundle();
         args.putString("agrs1", param1);
         fragment.setArguments(args);
@@ -69,13 +76,26 @@ public class SubjectFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_subject, container, false);
+        if (view == null) {
+            view = inflater.inflate(R.layout.fragment_subject, container, false);
+            unbinder = ButterKnife.bind(this, view);
+            isButterKnifeInit = true;
+            initView(view);
+        }
         Bundle bundle = getArguments();
         String agrs1 = bundle.getString("agrs1");
 /*        TextView tv = (TextView)view.findViewById(R.id.tv);
         tv.setText(agrs1);*/
-        unbinder = ButterKnife.bind(this, view);
-        initView(view);
+        if (unbinder == null) {
+            unbinder = ButterKnife.bind(this, view);
+        }
+//        initView(view);
+        //缓存的rootView需要判断是否已经被加过parent， 如果有parent需要从parent删除，要不然会发生这个rootview已经有parent的错误。
+//        ViewGroup parent = (ViewGroup) view.getParent();
+//        if (parent != null) {
+//            parent.removeView(view);
+//
+//        }
         return view;
     }
 
@@ -85,7 +105,11 @@ public class SubjectFragment extends BaseFragment {
 //initView(view);
     }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
 
+    }
 
     private void initView(View view) {
 
@@ -195,5 +219,6 @@ public class SubjectFragment extends BaseFragment {
 
     @OnItemClick(R.id.subject_lv)
     public void onViewClicked() {
+        T.s("点击了item");
     }
 }

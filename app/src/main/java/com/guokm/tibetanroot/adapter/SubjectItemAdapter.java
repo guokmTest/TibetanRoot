@@ -17,6 +17,7 @@ import com.guokm.tibetanroot.R;
 import com.guokm.tibetanroot.domain.MessageItem;
 import com.guokm.tibetanroot.domain.Subject;
 import com.guokm.tibetanroot.util.JJLImageLoader;
+import com.guokm.tibetanroot.util.T;
 import com.jauker.widget.BadgeView;
 import com.orhanobut.logger.Logger;
 
@@ -124,10 +125,12 @@ public class SubjectItemAdapter extends BaseAdapter {
         }
 
         static class ViewHolder extends RecyclerView.ViewHolder {
+//            View rootView;
             ImageView imageView;
 
             public ViewHolder(View itemView) {
                 super(itemView);
+//                rootView=itemView;
                 imageView = (ImageView) itemView.findViewById(R.id.rv_iv);
             }
         }
@@ -136,6 +139,20 @@ public class SubjectItemAdapter extends BaseAdapter {
         public RvAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_subject_rv, parent, false);
             ViewHolder holder = new ViewHolder(view);
+
+/*            holder.rootView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    T.s("点击的是rootView");
+                }
+            });*/
+
+            holder.imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    T.s("点击的是图片");
+                }
+            });
             return holder;
         }
 
