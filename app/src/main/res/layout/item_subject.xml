@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:gravity="center_vertical"
     android:orientation="vertical"
+    android:descendantFocusability="blocksDescendants"
     android:paddingLeft="10dp"
     android:paddingTop="10dp"
     android:layout_marginTop="10dip"
@@ -71,8 +72,10 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/subject_rv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:descendantFocusability="afterDescendants"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"

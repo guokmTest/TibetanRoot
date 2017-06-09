@@ -29,6 +29,7 @@
         <activity android:name=".activity.CollectionActivity" />
         <activity android:name=".activity.SetUpActivity" />
         <activity android:name=".activity.PublishActivity" />
+        <activity android:name=".activity.SubjectDetailActivity" />
     </application>
 
 </manifest>

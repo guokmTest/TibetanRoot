@@ -1,11 +1,13 @@
 package com.guokm.tibetanroot.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -18,6 +20,8 @@ import com.google.gson.reflect.TypeToken;
 import com.guokm.tibetanroot.R;
 import com.guokm.tibetanroot.TestJsonData;
 import com.guokm.tibetanroot.activity.MessageActivity;
+import com.guokm.tibetanroot.activity.MessageDetailActivity;
+import com.guokm.tibetanroot.activity.SubjectDetailActivity;
 import com.guokm.tibetanroot.adapter.MessageItemAdapter;
 import com.guokm.tibetanroot.adapter.SubjectItemAdapter;
 import com.guokm.tibetanroot.domain.MessageItem;
@@ -188,6 +192,7 @@ public class SubjectFragment extends BaseFragment {
                 }, 1000);
             }
         });
+
     }
 
 
@@ -218,7 +223,9 @@ public class SubjectFragment extends BaseFragment {
     }
 
     @OnItemClick(R.id.subject_lv)
-    public void onViewClicked() {
-        T.s("点击了item");
+    void OnItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+        //listview item的点击事件
+        Intent i=new Intent(getActivity(),SubjectDetailActivity.class);
+        startActivity(i);
     }
 }
