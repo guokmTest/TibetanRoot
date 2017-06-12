@@ -88,7 +88,23 @@ public class SubjectItemAdapter extends BaseAdapter {
         viewHolder.address_tv.setText(subject.getBody().getAddress());
         viewHolder.suject_body.setText(subject.getBody().getContent());
         viewHolder.heart_tv.setText(String.valueOf(subject.getBody().getHeart()));
+
+        viewHolder.comment_iv.setClickable(true);
+        viewHolder.comment_iv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                T.s("点击了评论图标");
+            }
+        });
+
         viewHolder.comment_tv.setText(String.valueOf(subject.getBody().getComment()));
+        viewHolder.comment_tv.setClickable(true);
+        viewHolder.comment_tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                T.s("点击了评论textview");
+            }
+        });
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);

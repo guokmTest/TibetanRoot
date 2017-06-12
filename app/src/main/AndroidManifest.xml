@@ -30,6 +30,7 @@
         <activity android:name=".activity.SetUpActivity" />
         <activity android:name=".activity.PublishActivity" />
         <activity android:name=".activity.SubjectDetailActivity" />
+        <activity android:name=".activity.RichStyleRvActivity"/>
     </application>
 
 </manifest>

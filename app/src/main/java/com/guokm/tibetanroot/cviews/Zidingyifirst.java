@@ -58,5 +58,7 @@ public class Zidingyifirst extends View {
         float cy=getHeight()>>1;
         float[] xy={cx,cy};
         canvas.drawCircle(xy[0], xy[1], mCircleRadius, mCirclePaint);//画圆方法，出入坐标X,Y，半径，画笔
+        canvas.drawLine(0,0,getWidth(),getHeight(),mCirclePaint);//画直线
+        canvas.drawLine(0,getHeight(),getWidth(),0,mCirclePaint);//画直线,最左上角是（0,0），右上角（0，getWidth()）,左下角(0,getHeight())，右下角(getWidth,getHeight)
     }
 }
