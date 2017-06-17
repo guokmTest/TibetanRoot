@@ -13,6 +13,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <!--umeng推送1,2+umeng多渠道-->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5943a777b27b0a3627001797"/>
+        <meta-data
+            android:name="UMENG_MESSAGE_SECRET"
+            android:value="2dbf03801a1d1cdd33ff51c9cda9f549"/>
+
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="${UMENG_CHANNEL_VALUE}"/>
+
 
         <activity android:name=".activity.MainActivity">
             <intent-filter>
@@ -30,7 +42,7 @@
         <activity android:name=".activity.SetUpActivity" />
         <activity android:name=".activity.PublishActivity" />
         <activity android:name=".activity.SubjectDetailActivity" />
-        <activity android:name=".activity.RichStyleRvActivity"/>
+        <activity android:name=".activity.RichStyleRvActivity" />
     </application>
 
 </manifest>

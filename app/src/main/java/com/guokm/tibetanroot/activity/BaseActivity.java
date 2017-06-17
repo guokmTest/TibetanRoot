@@ -10,7 +10,9 @@ import android.util.Log;
 import android.view.View;
 
 import com.guokm.tibetanroot.ActivityCollector;
+import com.guokm.tibetanroot.MyApplication;
 import com.orhanobut.logger.Logger;
+import com.umeng.message.PushAgent;
 
 import butterknife.ButterKnife;
 
@@ -19,11 +21,15 @@ import butterknife.ButterKnife;
  */
 
 public class BaseActivity extends AppCompatActivity implements View.OnClickListener {
-    String TAG=this.getClass().getSimpleName();
+    String TAG = this.getClass().getSimpleName();
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       /**
+
+        initUmengAppStartCount();
+
+        /**
          * 背景图和通知栏融合
          */
         if (Build.VERSION.SDK_INT >= 21) {
@@ -34,10 +40,17 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         ActivityCollector.addActivity(this);
     }
 
+    /**
+     * Umeng统计应用启动数据,初始化
+     */
+    private void initUmengAppStartCount() {
+        PushAgent.getInstance(MyApplication.getContext()).onAppStart();//
+    }
+
     @Override
     protected void onStart() {
         super.onStart();
-        Logger.i("当前所在activity是："+getClass().getSimpleName());
+        Logger.i("当前所在activity是：" + getClass().getSimpleName());
     }
 
     @Override
