@@ -1,5 +1,7 @@
 package com.guokm.tibetanroot.activity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -55,8 +57,14 @@ public class SetUpActivity extends BaseActivity {
                 break;
             case R.id.grade_tv:
                 //评分
+                Uri uri = Uri.parse("market://details?id="+getPackageName());
+                Intent intent = new Intent(Intent.ACTION_VIEW,uri);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
                 break;
             case R.id.about_tv:
+                Intent intentAbout = new Intent(this,AboutActivity.class);
+                startActivity(intentAbout);
                 break;
             case R.id.wipecache_tv:
                 //清缓存

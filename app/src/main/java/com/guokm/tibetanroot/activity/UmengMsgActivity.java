@@ -4,11 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 
 import com.guokm.tibetanroot.R;
 
@@ -17,46 +13,45 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * Created by Administrator on 2017/5/22.
+ * Created by Administrator on 2017/6/18.
  */
 
-public class PublishActivity extends BaseActivity {
+public class UmengMsgActivity extends BaseActivity {
+    @BindView(R.id.textView)
+    TextView textView;
     @BindView(R.id.back_button)
     Button backButton;
     @BindView(R.id.title_text)
     TextView titleText;
-    @BindView(R.id.search_button)
-    Button searchButton;
-    @BindView(R.id.et_content)
-    EditText etContent;
-    @BindView(R.id.iv_add)
-    ImageView ivAdd;
     @BindView(R.id.freshtime_tv)
     TextView freshtimeTv;
-    @BindView(R.id.title)
-    RelativeLayout title;
+    @BindView(R.id.search_button)
+    Button searchButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_publish);
+        setContentView(R.layout.activity_umeng_msg);
         ButterKnife.bind(this);
         initView();
     }
 
     private void initView() {
-        titleText.setText("发表主题");
         backButton.setVisibility(View.VISIBLE);
+        freshtimeTv.setVisibility(View.GONE);
         searchButton.setVisibility(View.GONE);
+        titleText.setText(getIntent().getStringExtra("custom"));
+        textView.setText(getIntent().getStringExtra("custom"));
 
     }
 
-    @OnClick(R.id.iv_add)
-    public void onViewClicked() {
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 
     @OnClick(R.id.back_button)
-    public void onfinish() {
+    public void onViewClicked() {
         finish();
     }
 }

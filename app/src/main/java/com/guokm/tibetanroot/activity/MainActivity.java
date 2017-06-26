@@ -13,10 +13,12 @@ import android.widget.TextView;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
+import com.guokm.tibetanroot.ActivityCollector;
 import com.guokm.tibetanroot.R;
 import com.guokm.tibetanroot.fragment.MineFragment;
 import com.guokm.tibetanroot.fragment.PublishFragment;
 import com.guokm.tibetanroot.fragment.SubjectFragment;
+import com.guokm.tibetanroot.util.T;
 
 public class MainActivity extends BaseActivity {
 
@@ -34,7 +36,8 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        RelativeLayout titleLayout= (RelativeLayout) this.findViewById(R.id.title);
+
+        RelativeLayout titleLayout = (RelativeLayout) this.findViewById(R.id.title);
         back_button = (Button) titleLayout.findViewById(R.id.back_button);
         search_button = (Button) titleLayout.findViewById(R.id.search_button);
         title_text = (TextView) titleLayout.findViewById(R.id.title_text);
@@ -46,10 +49,10 @@ public class MainActivity extends BaseActivity {
                 .addItem(new BottomNavigationItem(R.drawable.ic_home_white_24dp, "话题"))
                 .addItem(new BottomNavigationItem(R.drawable.ic_book_white_24dp, "发表"))
                 .addItem(new BottomNavigationItem(R.drawable.ic_music_note_white_24dp, "我"))
-                .setFirstSelectedPosition(lastSelectedPosition )
+                .setFirstSelectedPosition(lastSelectedPosition)
                 .initialise();
 
-        bottomNavigationBar.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener(){
+        bottomNavigationBar.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener() {
             @Override
             public void onTabSelected(int position) {
 //                Log.d(TAG, "onTabSelected() called with: " + "position = [" + position + "]");
@@ -84,9 +87,11 @@ public class MainActivity extends BaseActivity {
                 // 事务提交
                 transaction.commit();
             }
+
             @Override
             public void onTabUnselected(int position) {
             }
+
             @Override
             public void onTabReselected(int position) {
             }
@@ -100,11 +105,29 @@ public class MainActivity extends BaseActivity {
     private void setDefaultFragment() {
         FragmentManager fm = getFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
-        if(mSubjectFragment==null){
+        if (mSubjectFragment == null) {
 
             mSubjectFragment = SubjectFragment.newInstance("话题");
         }
         transaction.replace(R.id.tb, mSubjectFragment);
         transaction.commit();
+    }
+
+    // 退出时间
+    private long currentBackPressedTime = 0;
+    // 退出间隔
+    private static final int BACK_PRESSED_INTERVAL = 2000;
+
+    //在activity中重写onBackPressed方法
+    @Override
+    public void onBackPressed() {
+        // 判断时间间隔
+        if (System.currentTimeMillis() - currentBackPressedTime > BACK_PRESSED_INTERVAL) {
+            currentBackPressedTime = System.currentTimeMillis();
+            T.s("再按一次返回键退出程序");
+        } else {
+            // 退出
+            ActivityCollector.finishAll();
+        }
     }
 }

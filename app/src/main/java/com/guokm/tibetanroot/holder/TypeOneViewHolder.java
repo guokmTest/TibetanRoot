@@ -1,11 +1,14 @@
 package com.guokm.tibetanroot.holder;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.guokm.tibetanroot.MyApplication;
 import com.guokm.tibetanroot.R;
+import com.guokm.tibetanroot.activity.MyViewPagerActivity;
 import com.guokm.tibetanroot.domain.DataModel;
 import com.guokm.tibetanroot.util.T;
 
@@ -32,6 +35,8 @@ public class TypeOneViewHolder extends TypeAbstractViewHolder {
             @Override
             public void onClick(View view) {
                 T.s("点击了列表");
+                Intent i=new Intent(MyApplication.getContext(),MyViewPagerActivity.class);
+                MyApplication.getContext().startActivity(i);
             }
         });
         avatar.setOnClickListener(new View.OnClickListener() {

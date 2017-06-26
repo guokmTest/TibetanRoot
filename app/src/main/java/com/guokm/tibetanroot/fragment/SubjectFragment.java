@@ -45,17 +45,17 @@ import butterknife.Unbinder;
  */
 
 public class SubjectFragment extends BaseFragment {
-    @BindView(R.id.subject_lv)
+//    @BindView(R.id.subject_lv)
     ListView subjectLv;
-    Unbinder unbinder = null;
-    @BindView(R.id.message_list_view_frame)
+//    Unbinder unbinder = null;
+//    @BindView(R.id.message_list_view_frame)
     PtrClassicFrameLayout messageListViewFrame;
     private List<Subject> itemList = new ArrayList<Subject>();
     //    int page=0;
     Handler handler = new Handler();
     private static SubjectFragment fragment;
     private View view;
-    private boolean isButterKnifeInit = false;
+//    private boolean isButterKnifeInit = false;
 
     public static SubjectFragment newInstance(String param1) {
         if (fragment == null) {
@@ -82,31 +82,22 @@ public class SubjectFragment extends BaseFragment {
                              Bundle savedInstanceState) {
         if (view == null) {
             view = inflater.inflate(R.layout.fragment_subject, container, false);
-            unbinder = ButterKnife.bind(this, view);
-            isButterKnifeInit = true;
+//            unbinder = ButterKnife.bind(this, view);
+//            isButterKnifeInit = true;
             initView(view);
         }
         Bundle bundle = getArguments();
         String agrs1 = bundle.getString("agrs1");
-/*        TextView tv = (TextView)view.findViewById(R.id.tv);
-        tv.setText(agrs1);*/
-        if (unbinder == null) {
-            unbinder = ButterKnife.bind(this, view);
-        }
-//        initView(view);
-        //缓存的rootView需要判断是否已经被加过parent， 如果有parent需要从parent删除，要不然会发生这个rootview已经有parent的错误。
-//        ViewGroup parent = (ViewGroup) view.getParent();
-//        if (parent != null) {
-//            parent.removeView(view);
-//
+//        if (unbinder == null) {
+//            unbinder = ButterKnife.bind(this, view);
 //        }
+
         return view;
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-//initView(view);
     }
 
     @Override
@@ -118,15 +109,24 @@ public class SubjectFragment extends BaseFragment {
     private void initView(View view) {
 
         final SubjectItemAdapter adapter = new SubjectItemAdapter(getActivity(), itemList);
+        subjectLv= (ListView) view.findViewById(R.id.subject_lv);
         subjectLv.setAdapter(adapter);
+        subjectLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent ii=new Intent(getActivity(),SubjectDetailActivity.class);
+                startActivity(ii);
+            }
+        });
+
         messageListViewFrame = (PtrClassicFrameLayout) view.findViewById(R.id.message_list_view_frame);
         messageListViewFrame.setAutoLoadMoreEnable(false);
         messageListViewFrame.postDelayed(new Runnable() {//自动刷新
             @Override
             public void run() {
-                if (unbinder == null) {
-                    return;
-                }
+//                if (unbinder == null) {
+//                    return;
+//                }
                 messageListViewFrame.autoRefresh(true);
             }
         }, 150);
@@ -147,10 +147,10 @@ public class SubjectFragment extends BaseFragment {
 //                            getData(page);
                         getData();
                         adapter.notifyDataSetChanged();
-                        if (unbinder == null) {
-                            //防止注入解绑后找不到控件
-                            return;
-                        }
+//                        if (unbinder == null) {
+//                            //防止注入解绑后找不到控件
+//                            return;
+//                        }
                         messageListViewFrame.refreshComplete();
 //                            page++;
                         if (!messageListViewFrame.isLoadMoreEnable()) {
@@ -173,9 +173,9 @@ public class SubjectFragment extends BaseFragment {
 //                            getData(page);
 //                        itemList.add(new String("  ListView item  - add " + page));
                         adapter.notifyDataSetChanged();
-                        if (unbinder == null) {
-                            return;
-                        }
+//                        if (unbinder == null) {
+//                            return;
+//                        }
                         messageListViewFrame.loadMoreComplete(true);
 //                            Toast.makeText(getActivity(), "第"+page+"页加载完毕", Toast.LENGTH_SHORT)
 //                                    .show();
@@ -218,14 +218,14 @@ public class SubjectFragment extends BaseFragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        unbinder.unbind();
-        unbinder = null;
+//        unbinder.unbind();
+//        unbinder = null;
     }
-
-    @OnItemClick(R.id.subject_lv)
-    void OnItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-        //listview item的点击事件
-        Intent i=new Intent(getActivity(),SubjectDetailActivity.class);
-        startActivity(i);
-    }
+//
+//    @OnItemClick(R.id.subject_lv)
+//    void OnItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+//        //listview item的点击事件
+//        Intent i=new Intent(getActivity(),SubjectDetailActivity.class);
+//        startActivity(i);
+//    }
 }

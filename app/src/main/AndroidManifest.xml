@@ -4,45 +4,77 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
 
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
+        android:debuggable="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <!--umeng推送1,2+umeng多渠道-->
+
+        <!-- umeng推送1,2+umeng多渠道 -->
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="5943a777b27b0a3627001797"/>
+            android:value="5943a777b27b0a3627001797" />
         <meta-data
             android:name="UMENG_MESSAGE_SECRET"
-            android:value="2dbf03801a1d1cdd33ff51c9cda9f549"/>
-
+            android:value="2dbf03801a1d1cdd33ff51c9cda9f549" />
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="${UMENG_CHANNEL_VALUE}"/>
+            android:value="${UMENG_CHANNEL_VALUE}" />
 
-
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.PersonInfoActivity" />
-        <activity android:name=".activity.ModifyNickActivity" />
-        <activity android:name=".activity.MessageActivity" />
-        <activity android:name=".activity.MessageDetailActivity" />
-        <activity android:name=".activity.TopicActivity" />
-        <activity android:name=".activity.CollectionActivity" />
-        <activity android:name=".activity.SetUpActivity" />
-        <activity android:name=".activity.PublishActivity" />
-        <activity android:name=".activity.SubjectDetailActivity" />
-        <activity android:name=".activity.RichStyleRvActivity" />
+        <activity
+            android:name=".activity.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.PersonInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ModifyNickActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.MessageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.MessageDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.TopicActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.CollectionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.SetUpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.PublishActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.SubjectDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.RichStyleRvActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.UmengMsgActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.AboutActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.MyViewPagerActivity"></activity>
     </application>
 
 </manifest>
