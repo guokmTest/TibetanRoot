@@ -6,8 +6,17 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-  <!--      <item name="android:windowTranslucentStatus">false</item>    &lt;!&ndash;状态栏为透明,如果设置为false，则没有黑色条盖住，见下图对比&ndash;&gt;
-        <item name="android:windowTranslucentNavigation">true</item> &lt;!&ndash;导航栏为透明&ndash;&gt;-->
+        <!--      <item name="android:windowTranslucentStatus">false</item>    &lt;!&ndash;状态栏为透明,如果设置为false，则没有黑色条盖住，见下图对比&ndash;&gt;
+              <item name="android:windowTranslucentNavigation">true</item> &lt;!&ndash;导航栏为透明&ndash;&gt;-->
+    </style>    <!--  splash theme. -->
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:windowTranslucentStatus">false</item>    <!--状态栏为透明,如果设置为false，则没有黑色条盖住，见下图对比-->
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/colorTransparent</item>
+        <item name="android:windowFullscreen">true</item>
+
     </style>
 
 </resources>

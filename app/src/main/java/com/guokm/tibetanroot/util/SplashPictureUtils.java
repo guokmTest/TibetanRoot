@@ -39,20 +39,20 @@ public class SplashPictureUtils {
 
     private Context mContext;
     private PhoneSPUtils phoneSPUtils;
-    private SharedPreferences preferences;
+//    private SharedPreferences preferences;
 
     public SplashPictureUtils(Context context) {
 
         this.mContext = context;
         phoneSPUtils = new PhoneSPUtils(mContext);
-        preferences = PreferenceManager.getDefaultSharedPreferences(MyApplication.getContext());
+//        preferences = PreferenceManager.getDefaultSharedPreferences(MyApplication.getContext());
 
     }
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public void setSplashBg(ImageView view) {
-//        String sp_path = phoneSPUtils.getString("splash_image");
-        String sp_path = preferences.getString("splash_image", null);
+        String sp_path = phoneSPUtils.getString("splash_image");
+//        String sp_path = preferences.getString("splash_image", null);
         boolean sdCardExist = Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
         if (sp_path != null) {
             Bitmap bitmap = getBitmaptoFile(sp_path);
@@ -90,8 +90,8 @@ public class SplashPictureUtils {
                     Logger.e("picurl----:" + requestText);
                     String path = requestText;
                     if (path != null && !path.equals("")) {
-//                        if (phoneSPUtils.getString("splash_image") != null && phoneSPUtils.getString("splash_image").equals(path)) {
-                        if (preferences.getString("splash_image", null) != null && preferences.getString("splash_image", null).equals(path)) {
+                        if (phoneSPUtils.getString("splash_image") != null && phoneSPUtils.getString("splash_image").equals(path)) {
+//                        if (preferences.getString("splash_image", null) != null && preferences.getString("splash_image", null).equals(path)) {
                         } else {
                             downLoadPicture(path);
                         }
@@ -111,10 +111,10 @@ public class SplashPictureUtils {
         try {
             Bitmap bitmap = Picasso.with(mContext).load(url).get();
             saveFile(bitmap, url);
-//            phoneSPUtils.save("splash_image", url);
-            SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(MyApplication.getContext()).edit();
-            editor.putString("splash_image", url);
-            editor.apply();
+            phoneSPUtils.save("splash_image", url);
+//            SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(MyApplication.getContext()).edit();
+//            editor.putString("splash_image", url);
+//            editor.apply();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -127,17 +127,18 @@ public class SplashPictureUtils {
      * @throws IOException
      */
     private void saveFile(Bitmap bm, String urlPath) throws IOException {
-        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(MyApplication.getContext()).edit();
-        editor.putString("splash_image", urlPath);
-        editor.apply();
+        phoneSPUtils.save("splash_image", urlPath);
+//        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(MyApplication.getContext()).edit();
+//        editor.putString("splash_image", urlPath);
+//        editor.apply();
 //        String path = getSDPath() + "/splash/";
-        String path =  FileUtils.getDiskCacheDir(mContext)+File.separator+"splash"+File.separator;
+        String path = FileUtils.getDiskCacheDir(mContext) + File.separator + "splash" + File.separator;
         File dirFile = new File(path);
         if (!dirFile.exists()) {
             dirFile.mkdir();
         }
         File myCaptureFile = new File(path + getFileName(urlPath));//
-        if(!myCaptureFile.exists()){
+        if (!myCaptureFile.exists()) {
             myCaptureFile.createNewFile();
         }
         BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(myCaptureFile));
@@ -165,11 +166,11 @@ public class SplashPictureUtils {
      */
     public Bitmap getBitmaptoFile(String filePath) {
 //        String path = getSDPath() + "/splash/" + getFileName(filePath);
-        String path =  FileUtils.getDiskCacheDir(mContext)+File.separator+"splash"+File.separator+getFileName(filePath);
+        String path = FileUtils.getDiskCacheDir(mContext) + File.separator + "splash" + File.separator + getFileName(filePath);
 //        String path = "sdcard/jajale/a.jpg" ;
         Bitmap bitmap = null;
 //        if (fileIsExists(filePath)) {
-            bitmap = BitmapFactory.decodeFile(path);
+        bitmap = BitmapFactory.decodeFile(path);
 //        }
         return bitmap;
 

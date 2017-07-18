@@ -73,5 +73,6 @@ public class MyViewPagerActivity extends AppCompatActivity {
         };
 
         vp.setAdapter(pagerAdapter);
+        vp.setCurrentItem(0);//设置默认vp
     }
 }

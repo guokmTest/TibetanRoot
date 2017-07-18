@@ -9,9 +9,9 @@ package com.guokm.tibetanroot.util;
  */
 public class SPKeyConstants {
 
-    public static final String JJL_ACCOUNT_SHAREPREFERENCE = "jjl_account_sf";
-    public static final String JJL_APP_SHAREPREFERENCE = "jjl_app_sf";
-    public static final String JJL_APP_LOCK_SHAREPERFERENCE = "jjl_lock_sf";
+//    public static final String JJL_ACCOUNT_SHAREPREFERENCE = "jjl_account_sf";
+    public static final String JJL_APP_SHAREPREFERENCE = "canggen_app_sf";
+//    public static final String JJL_APP_LOCK_SHAREPERFERENCE = "jjl_lock_sf";
 
     //手机屏幕密度等级
     public static final String CONFIG_PHONE_DENSITY = "phone_density";

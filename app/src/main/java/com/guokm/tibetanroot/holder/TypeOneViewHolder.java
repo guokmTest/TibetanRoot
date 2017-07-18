@@ -36,6 +36,7 @@ public class TypeOneViewHolder extends TypeAbstractViewHolder {
             public void onClick(View view) {
                 T.s("点击了列表");
                 Intent i=new Intent(MyApplication.getContext(),MyViewPagerActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);//非activity调用startActivity需要设置Task
                 MyApplication.getContext().startActivity(i);
             }
         });
